@@ -32,24 +32,28 @@ javacOptions in Global ++= Seq(
 )
 
 lazy val sparkLib = Seq(
-  "org.apache.spark" %% "spark-core" % sparkVersion % Provided withSources() withJavadoc()
+  "org.apache.spark" %% "spark-core" % sparkVersion withSources() withJavadoc(),
+  "org.apache.spark" %% "spark-mllib" % sparkVersion withSources() withJavadoc(),
+  "org.apache.spark" %% "spark-graphx" % sparkVersion withSources() withJavadoc(),
+  "org.apache.spark" %% "spark-sql" % sparkVersion withSources() withJavadoc(),
+  "org.apache.spark" %% "spark-hive" % sparkVersion withSources() withJavadoc()
 )
 
 lazy val auxLib = Seq(
-  "commons-codec" % "commons-codec" % "1.10" % Provided,
-  "org.apache.commons" % "commons-lang3" % "3.3.2" % Provided withSources(),
+  "commons-codec" % "commons-codec" % "1.10",
+  "org.apache.commons" % "commons-lang3" % "3.3.2" withSources(),
   // AWS
-  "com.amazonaws" % "aws-java-sdk" % "1.8.9.1" % Provided withSources(),
+  "com.amazonaws" % "aws-java-sdk" % "1.8.9.1" withSources(),
   // parsing
   "org.json4s" %% "json4s-ext" % "3.2.10",
-  "net.sf.supercsv" % "super-csv" % "2.2.0" % Provided withSources(),
+  "net.sf.supercsv" % "super-csv" % "2.2.0" withSources(),
   // validators
   "com.github.fge" % "json-schema-validator" % "2.2.0" withSources(),
   "commons-validator" % "commons-validator" % "1.4.0" withSources(),
   // utils
   "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2" withSources(),
   "com.github.nscala-time" %% "nscala-time" % "1.6.0" withSources(),
-  "org.slf4j" % "slf4j-api" % "1.7.10" % Provided withSources()
+  "org.slf4j" % "slf4j-api" % "1.7.10" withSources()
 )
 
 lazy val testLib = Seq(
