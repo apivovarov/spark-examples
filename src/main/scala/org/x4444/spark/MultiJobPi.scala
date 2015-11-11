@@ -7,17 +7,22 @@ import org.apache.spark.{SparkConf, SparkContext}
 object MultiJobPi {
 
   def main(args: Array[String]) {
-    if (args.length != 2) {
-      println("Usage: MultiJobPi <jobs_total> <jobs_per_context>")
+    if (args.length != 3) {
+      println("Usage: MultiJobPi <jobs_total> <jobs_per_context> <mode>")
       System.exit(1)
     }
 
+    val fairConf = "/etc/spark/conf/fairscheduler.xml"
     val conf = new SparkConf().setAppName("MultiJobPi")
+    if (args(2).equalsIgnoreCase("fair")) {
+      conf.set("spark.scheduler.mode", "FAIR").
+        set("spark.scheduler.allocation.file", fairConf)
+    }
     val sc = new SparkContext(conf)
 
     val jobsTotal = args(0).toInt
     var jobsPerContext = args(1).toInt
-    val piIterations = 1000000
+    val piIterations = 10000000
     val timeoutMin = 1000
 
     try {
