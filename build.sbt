@@ -7,7 +7,7 @@ lazy val appSettings = Seq(
 // Those settings should be the same as in alchemy!
 lazy val scalaVersion_ = "2.10.4" // should be the same as spark
 lazy val javaVersion = "1.7" // should be the same as spark
-lazy val sparkVersion = "1.5.1"
+lazy val sparkVersion = "1.4.1"
 
 lazy val scalaCheckVersion = "1.12.2"
 lazy val scalaTestVersion = "2.2.4"
